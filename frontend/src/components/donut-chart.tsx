@@ -183,9 +183,10 @@ export function DonutChart({ items, total, centerValue, title, subtitle, safeLin
                 isAnimationActive={!reducedMotion}
                 animationDuration={600}
                 animationEasing="ease-out"
-                onMouseEnter={(data) => {
-                  if (typeof data?.id === "string") {
-                    setActiveLegendId(data.id);
+                onMouseEnter={(_, index) => {
+                  const hoveredDatum = chartData[index];
+                  if (hoveredDatum) {
+                    setActiveLegendId(hoveredDatum.id);
                   }
                 }}
                 onMouseLeave={() => setActiveLegendId(null)}
